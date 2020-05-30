@@ -18,7 +18,7 @@ classdef cableTrussUnit < handle
             obj.bLength = length_b;
             obj.T = eye(3);
             obj.T(1,3) = obj.bLength;
-            obj.barWidth = 0.1;
+            obj.barWidth = 0.1*length_b;
             obj.setGraphicPrototypes();
         end
         

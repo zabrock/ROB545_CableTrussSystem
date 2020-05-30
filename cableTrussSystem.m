@@ -12,7 +12,7 @@ classdef cableTrussSystem < handle
             obj.figHandle = figure();
         end
         
-        function drawTrussSystem(obj,theta)
+        function drawTrussSystem(obj,theta,axis_limits)
             % Reset graphics if figure was deleted
             if ~isvalid(obj.figHandle)
                 obj.figHandle = figure(); hold on;
@@ -30,6 +30,9 @@ classdef cableTrussSystem < handle
                 obj.trussUnits(i).drawTrussUnit(prevTransform,drawBaseUnit);
                 drawBaseUnit = 0;
                 prevTransform = prevTransform*obj.trussUnits(i).T;
+            end
+            if exist('axis_limits','var') && ~isempty(axis_limits)
+                axis(axis_limits);
             end
             axis('equal');
             hold off;
